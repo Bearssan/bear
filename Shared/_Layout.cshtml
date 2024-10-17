@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - YouTubeApiProject1</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://bootswatch.com/5/quartz/bootstrap.min.css" />
+    <style>
+        /* Flexbox layout to stick footer at the bottom */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            flex: 1; /* Allows the container to grow and fill space */
+        }
+
+        footer {
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+            padding: 10px 0; /* Padding for footer */
+            position: relative; /* To ensure stacking context */
+            z-index: 10; /* Ensure footer stays above other content if necessary */
+        }
+
+        .footer-content {
+            position: relative; /* Relative positioning for the footer content */
+            z-index: 20; /* Ensure footer content is above the footer background */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")" style="font-weight: 900; color: rgb(255, 255, 255);">
+                    <strong>Mitube</strong>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <!-- Left Section: Navigation Links -->
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="@Url.Action("Index", "Home")">
+                                Home<span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Right Section: Login/Profile button -->
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-top footer text-muted">
+        <div class="footer-content text-center">
+            &copy; 2024 - YouTubeApiProject1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

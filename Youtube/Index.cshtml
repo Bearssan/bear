@@ -1,0 +1,39 @@
+﻿@model List<YouTubeApiProject1.Models.YouTubeVideoModel>
+
+<h2 style="text-align: center; font-size: 1.5rem;">Search YouTube Videos</h2> <!-- Reduced font size -->
+<!-- Centered Search Form -->
+<div style="text-align: center; margin-bottom: 30px;">
+    <form asp-action="Search" method="post" style="display: inline-block;">
+        <input type="text" name="query" placeholder="Search for videos..."
+               style="width: 300px; padding: 8px; border-radius: 20px; background-color: rgba(255, 255, 255, 0.7); border: none;" /> <!-- Reduced width and padding -->
+        <button type="submit" style="border-radius: 20px; padding: 8px 12px;">Search</button> <!-- Adjusted button padding -->
+    </form>
+</div>
+
+@if (Model != null && Model.Any())
+{
+    <div class="container">
+        <!-- Video container row with smaller gap between columns (g-1) -->
+        <div class="row g-20 justify-content-center">
+            <!-- 'g-1' reduces the horizontal and vertical gap between columns -->
+            @foreach (var video in Model)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
+                    <!-- Adjusted margin-bottom to mb-2 for smaller gap -->
+                    <div style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; text-align: left; width: 300px; margin: 0 auto;">
+                        <!-- Make video container width smaller -->
+                        <img src="@video.ThumbnailUrl" alt="@video.Title" style="width: 100%; height: auto; border-radius: 10px;" />
+                        <h3 style="font-size: 1.1rem; margin-top: 10px;">@video.Title</h3>
+                        <p style="font-size: 0.9rem;">@video.Description</p>
+                        <a href="@video.VideoUrl" target="_blank">
+                            <button type="button"
+                                    style="margin-top: 10px; padding: 8px 16px; border-radius: 20px; background-color: #ffd1dc; border: none; color: white;">
+                                Watch
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
